@@ -1,7 +1,7 @@
-var galleryCtrl = angular.module('galleryCtrl', []);
-galleryCtrl.controller('galleryController', function($scope, $http){
+var studentCtrl = angular.module('studentCtrl', []);
+studentCtrl.controller('studentController', function($scope, $http){
     $scope.moodleFiles = [];
-    //Retrieve all the files to show the gallery
+    //Retrieve all the files to show student view
     $http.get('/moodleFile')
     .then(function (response) {
 
@@ -16,7 +16,3 @@ galleryCtrl.controller('galleryController', function($scope, $http){
     });
 
 })
-
-//    .success(function(data){
-//        console.log(JSON.stringify(data));
-//        $scope.files = data;

@@ -1,18 +1,14 @@
 //Main file
-var app = angular.module('moodleFileApp', ['addMoodleFileCtrl', 'galleryCtrl','detailCtrl', 'ngRoute', 'angular-filepicker'])
+var app = angular.module('moodleFileApp', ['addMoodleFileCtrl', 'studentCtrl', 'ngRoute', 'angular-filepicker'])
     .config(function($routeProvider, filepickerProvider){
         //The route provider handles the client request to switch route
         $routeProvider.when('/addMoodleFile', {          
             templateUrl: 'partials/addMoodleFile.html',
             controller: 'addMoodleFileController'            
         })
-        .when('/gallery', {
-            templateUrl: 'partials/gallery.html',
-            controller: 'galleryController'
-        })
-        .when('/detail/:id', {
-            templateUrl: 'partials/detail.html',
-            controller: 'detailController'
+        .when('/student', {
+            templateUrl: 'partials/student.html',
+            controller: 'studentController'
         })
         //Redirect to addFile in all the other cases.
         .otherwise({redirectTo:'/addMoodleFile'});
