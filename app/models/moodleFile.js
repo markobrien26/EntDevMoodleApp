@@ -7,7 +7,7 @@ var MoodleFileSchema = new Schema({
     name: {type: String, required: true},
     moodleFile: {type: Schema.Types.Mixed, required: true},
     moreMoodleFiles: Schema.Types.Mixed,
-    module: {type: String, default: "none"},
+    module: {type: String, default: ""},
     createdAt: {type: Date, default: Date.now},    
 });
 
