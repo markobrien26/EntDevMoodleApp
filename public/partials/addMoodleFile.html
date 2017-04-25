@@ -41,7 +41,7 @@
 </div>
 <div class="col-md-4" ng-init="displayMoodleFile()">
     <div ng-repeat="moodleFile in moodleFiles">
-        <div ng-show="{{ moodleFile.module.match('none') }}">            
+        <div ng-show="{{ !moodleFile.module }}">            
           <div class="thumbnail">
             <img ng-src="{{moodleFile.file.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
             <div class="caption text-center">
@@ -53,7 +53,7 @@
 </div>
 <div class="col-md-4" ng-init="displayMoodleFile()">
     <div ng-repeat="moodleFile in moodleFiles">
-        <div ng-hide="{{ moodleFile.module.match('none') }}">            
+        <div ng-hide="{{ !moodleFile.module}}">            
           <div class="thumbnail">
             <img ng-src="{{moodleFile.file.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
             <div class="caption text-center">

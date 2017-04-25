@@ -1,7 +1,7 @@
 <!-- view the gallery of all the files in the db -->
 <div class="row">
 <div ng-repeat="moodleFile in moodleFile">
-    <div ng-hide="{{ moodleFile.module.match('none') }}">            
+    <div ng-hide="{{ !moodleFile.module }}">            
       <div class="thumbnail">
         <img ng-src="{{moodleFile.file.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
         <div class="caption text-center">
