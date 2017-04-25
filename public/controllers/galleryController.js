@@ -1,8 +1,8 @@
 var galleryCtrl = angular.module('galleryCtrl', []);
 galleryCtrl.controller('galleryController', function($scope, $http){
-    $scope.superheroes = [];
-    //Retrieve all the superheroes to show the gallery
-    $http.get('/superhero')
+    $scope.moodleFiles = [];
+    //Retrieve all the files to show the gallery
+    $http.get('/moodleFile')
     .then(function (response) {
 
         var data = response.data;
@@ -11,12 +11,12 @@ galleryCtrl.controller('galleryController', function($scope, $http){
         var headers = response.headers;
         var config = response.config;
 
-        $scope.superhero = data;
-        console.log($scope.superhero);
+        $scope.moodleFile = data;
+        console.log($scope.moodleFile);
     });
 
 })
 
 //    .success(function(data){
 //        console.log(JSON.stringify(data));
-//        $scope.superheroes = data;
+//        $scope.files = data;

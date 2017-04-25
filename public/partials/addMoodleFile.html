@@ -1,0 +1,66 @@
+
+<div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title text-center">
+                <span class="glyphicon glyphicon-user"></span>Moodle File Upload form 
+            </h2>
+        </div>
+        <div class="panel-body">
+            <!-- The form to add files information -->
+            <form name ="addForm" novalidate>
+                <div class="form-group">
+                    <label for="username">Name</label>
+                    <input type="text" class="form-control" placeholder="Enter File Name" ng-model="moodleFile.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="module">Module</label>
+                    <input type="text" class="form-control" placeholder="Enter Module Name" ng-model="moodleFile.module">
+                </div>
+                <div class="form-group">
+                    <label for="moodleFile">Main File</label>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-default" ng-click="upload()">
+                            Upload <span class="caret"></span>
+                        </button>
+                        <div style="margin-top:10px;">
+                            <!-- Show the thumbnail only when the file is uploaded -->
+                            <a href="{{moodleFile.moodleFile.url}}" class="thumbnail" ng-if="moodleFile.moodleFile">
+                                <!-- the file is rendered with width: 500 and sharpened -->
+                                <img ng-src="{{moodleFile.moodleFile.url | fpConvert: {filter:'sharpen'} }}">
+                            </a>
+                        </div>                  
+                    </div>
+                </div>
+                <hr />              
+                <button type="submit" class="btn btn-danger btn-block"  ng-click="createMoodleFile(); displayMoodleFile()" ng-disabled="moodleFile.$invalid || !moodleFile.moodleFile">Submit</button>             
+            </form>
+        </div>
+    </div>
+    
+</div>
+<div class="col-md-4" ng-init="displayMoodleFile()">
+    <div ng-repeat="moodleFile in moodleFiles">
+        <div ng-show="{{ moodleFile.module.match('none') }}">            
+          <div class="thumbnail">
+            <img ng-src="{{moodleFile.file.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
+            <div class="caption text-center">
+              <p><label>File: </label> <a ng-href="{{ moodleFile.moodleFile.url }}">{{moodleFile.name}}</a></p>
+            </div>
+          </div>
+        </div>
+    </div>  
+</div>
+<div class="col-md-4" ng-init="displayMoodleFile()">
+    <div ng-repeat="moodleFile in moodleFiles">
+        <div ng-hide="{{ moodleFile.module.match('none') }}">            
+          <div class="thumbnail">
+            <img ng-src="{{moodleFile.file.url | fpConvert: {filter:'sharpen', w:300, h:150} }}" />
+            <div class="caption text-center">
+              <p><label>File: </label> <a ng-href="{{ moodleFile.moodleFile.url }}">{{moodleFile.name}}</a></p>
+              <p><label>Module: </label> {{moodleFile.module}}</p>
+            </div>
+          </div>
+        </div>
+    </div>  
+</div>

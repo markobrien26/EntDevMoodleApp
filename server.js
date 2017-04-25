@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var path = require('path');
 
-var superhero = require('./app/routes/superhero')();
+var moodleFile = require('./app/routes/moodleFile')();
 
 
 
@@ -31,11 +31,11 @@ app.use(bodyParser.json({ type: 'application/json'}));
 // Static files
 app.use(express.static(__dirname + '/public')); 
 
-app.route('/superhero')
-.post(superhero.post)
-.get(superhero.getAll);
-app.route('/superhero/:id')
-.get(superhero.getOne);
+app.route('/moodleFile')
+.post(moodleFile.post)
+.get(moodleFile.getAll);
+app.route('/moodleFile/:id')
+.get(moodleFile.getOne);
 
 app.listen(port);
 console.log('listening on port ' + port);

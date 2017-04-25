@@ -1,9 +1,9 @@
 var detailCtrl = angular.module('detailCtrl', []);
 detailCtrl.controller('detailController', function($scope, $http, $routeParams){
-    $scope.superhero = {};
-    //get the id to query the db and retrieve the correct superhero
+    $scope.moodleFile = {};
+    //get the id to query the db and retrieve the correct file
     var id = $routeParams.id;
-    $http.get('/superhero/' + id)
+    $http.get('/moodleFile/' + id)
     .then(function (response) {
         
         var data = response.data;
@@ -12,8 +12,8 @@ detailCtrl.controller('detailController', function($scope, $http, $routeParams){
         var headers = response.headers;
         var config = response.config;
 
-        $scope.superhero = data;
-        console.log($scope.superhero);
+        $scope.moodleFile = data;
+        console.log($scope.moodleFile);
     });
     
 });

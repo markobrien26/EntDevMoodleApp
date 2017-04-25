@@ -1,9 +1,10 @@
-var addCtrl = angular.module('addSuperheroCtrl', []);
-addCtrl.controller('addSuperheroController', function($scope, $http, filepickerService){
-    $scope.superhero = {};
-    //Send the newly created superhero to the server to store in the db
-    $scope.createSuperhero = function(){
-        $http.post('/superhero', $scope.superhero)
+var addCtrl = angular.module('addMoodleFileCtrl', []);
+addCtrl.controller('addMoodleFileController', function($scope, $http, filepickerService){
+    $scope.moodleFile = {};
+    $scope.moodleFiles = [];
+    //Send the newly created file to the server to store in the db
+    $scope.createMoodleFile = function(){
+        $http.post('/moodleFile', $scope.moodleFile)
         .then(function (response) {
 
             var data = response.data;
@@ -12,8 +13,22 @@ addCtrl.controller('addSuperheroController', function($scope, $http, filepickerS
             var headers = response.headers;
             var config = response.config;
 
-            $scope.superhero = {};
-            console.log(JSON.stringify(data));
+            $scope.moodleFile = {};
+            //console.log(JSON.stringify(data));
+        });
+    };
+    $scope.displayMoodleFile = function(){
+        $http.get('/moodleFile')
+        .then(function (response) {
+
+            var data = response.data;
+            var status = response.status;
+            var statusText = response.statusText;
+            var headers = response.headers;
+            var config = response.config;
+
+            $scope.moodleFiles = data;
+            console.log($scope.moodleFiles);
         });
     };
     //Single file upload, you can take a look at the options
@@ -27,7 +42,7 @@ addCtrl.controller('addSuperheroController', function($scope, $http, filepickerS
         },
         function(Blob){
             console.log(JSON.stringify(Blob));
-            $scope.superhero.picture = Blob;
+            $scope.moodleFile.moodleFile = Blob;
             $scope.$apply();
         }
         );
@@ -44,7 +59,7 @@ addCtrl.controller('addSuperheroController', function($scope, $http, filepickerS
             },
             function(Blob){
                 console.log(JSON.stringify(Blob));
-                $scope.superhero.morePictures = Blob;
+                $scope.moodleFile.moreMoodleFiles = Blob;
                 $scope.$apply();
             }
             );
